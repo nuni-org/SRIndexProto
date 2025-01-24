@@ -1,4 +1,4 @@
-# nuni-Proto
+# SRIndexProto
 Prototype for calculating Social Relationship Index 
 
 # Use
