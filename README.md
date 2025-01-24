@@ -3,12 +3,25 @@
 
 # Use
 ```bash
-# nuni-org <money> celebration> <freq-call> <freq-meeting>
+# nuni-org <give-and-take> <celebration> <freq-call> <freq-meeting>
 
 ```
 
-## Requirements:
+## Requirements
+```bash
+To calculate the Index, you need arguments below:
+- give-and-take
+- celebration
+- freq-call
+- freq-meeing
 
+and set weight of each arguments in range: 
+- 0 < weight1 < 1, = w1
+- 0 < weight2 < 1, = w2
+- 0 < weight3 < 1, = w3
+- 0 < weight4 < 1, = w4
+and summation of all weight(w1+w2+w3+w4) must be equal to 1
+```
 
 ```bash
 ## Development environment setting guide
