@@ -17,3 +17,7 @@ build-backend = "pdm.backend"
 
 [tool.pdm]
 distribution = true
+
+[project.urls]
+Homepage = "https://github.com/nunininu/SRIndexProto"
+Issues = "https://github.com/nunininu/SRIndexProto/issues"
