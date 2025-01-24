@@ -1,5 +1,5 @@
 # nuni-Proto
-Prototype for calculating index of social relationship 
+Prototype for calculating Social Relationship Index 
 
 # Use
 ```bash
