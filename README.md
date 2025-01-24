@@ -3,17 +3,33 @@
 
 # Use
 ```bash
-# nuni-org <give-and-take> <celebration> <freq-call> <freq-meeting>
+$ srindex --help
 
+ Usage: srindex [OPTIONS] GIVE_AND_TAKE CELEBRATION FREQ_CALL FREQ_MEETING
+
+╭─ Arguments ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *    give_and_take      INTEGER  [default: None] [required]                                                                                   │
+│ *    celebration        INTEGER  [default: None] [required]                                                                                   │
+│ *    freq_call          INTEGER  [default: None] [required]                                                                                   │
+│ *    freq_meeting       INTEGER  [default: None] [required]                                                                                   │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --help          Show this message and exit.                                                                                                   │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+$ srindexproto 1 1 1 1
+(71, 1, 61, 40)
+$ srindexproto 1 1 1 1
+(62, 1, 32, 92)
 ```
 
 ## Requirements
 ```bash
 To calculate the Index, you need arguments below:
-- give-and-take
+- give_and_take
 - celebration
-- freq-call
-- freq-meeing
+- freq_call
+- freq_meeing
 
 and set weight of each arguments in range: 
 - 0 < weight1 < 1, = w1
