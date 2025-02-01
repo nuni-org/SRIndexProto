@@ -39,15 +39,15 @@ and set weight of each arguments in range:
 and summation of all weight(w1+w2+w3+w4) must be equal to 1
 ```
 
+# Development environment setting guide
 ```bash
-## Development environment setting guide
-
 # install PDM
 # git clone ...
 # pdm venv create
 $ source .venv/bin/activate
 $ pdm install
 # $ vi ...
+
 
 # TEST
 $ pdm install
@@ -58,4 +58,27 @@ $ git add <FILE_NAME>
 $ git commit -a
 $ git push
 $ pdm publish --username __token__ --password $PYPI_TOKEN
+
+View at:
+https://pypi.org/project/SRIndexProto/
+
+# PR - Merge
+# Tag - Releases
 ```
+
+### Test
+- https://docs.pytest.org/en/stable/
+```bash
+# $ pdm add -dG test pytest pytest-cov
+$ pytest
+$ pytest -s
+$ pytest --cov
+```
+
+### Ref
+```bash
+- https://pdm-project.org/en/latest/
+- https://packaging.python.org/en/latest/tutorials/packaging-projects/
+- [console_scripts](https://packaging.python.org/en/latest/specifications/entry-points/#entry-points-specification)
+```
+
