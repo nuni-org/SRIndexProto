@@ -1,11 +1,11 @@
 [project]
 name = "SRIndexProto"
-version = "0.2.1"
+version = "0.3.0"
 description = "Default template for PDM package"
 authors = [
     {name = "nunininu", email = "sgcho0907@gmail.com"},
 ]
-dependencies = ["typer>=0.15.1"]
+dependencies = ["typer>=0.15.1", "pandas>=2.2.3"]
 requires-python = ">=3.10"
 readme = "README.md"
 license = {text = "MIT"}

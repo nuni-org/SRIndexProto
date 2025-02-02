@@ -3,40 +3,78 @@
 
 # Use
 ```bash
-$ srindex --help
+$ srindex 
 
- Usage: srindex [OPTIONS] GIVE_AND_TAKE CELEBRATION FREQ_CALL FREQ_MEETING
+Please read the script and think of people around you carefully.
+Please answer the questions faithfully.
 
-╭─ Arguments ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ *    give_and_take      INTEGER  [default: None] [required]                                                                                   │
-│ *    celebration        INTEGER  [default: None] [required]                                                                                   │
-│ *    freq_call          INTEGER  [default: None] [required]                                                                                   │
-│ *    freq_meeting       INTEGER  [default: None] [required]                                                                                   │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ --help          Show this message and exit.                                                                                                   │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+You can estimate the Index of overall by calculating average.
+and also the Index of case(person) individually.
 
-$ srindexproto 1 1 1 1
-(71, 1, 61, 40)
-$ srindexproto 1 1 1 1
-(62, 1, 32, 92)
+BUT, PLEASE DO NOT BE SERIOUS.
+
+Results are shown as follows:
+
+--------------------------------- RESULT ----------------------------------------
+The importance of each elements you answered: scale of 100
+- money: 38.46
+- time: 30.77
+- emotion: 30.77
+
+The average performance of each elements you answered: scale of 100
+- money: 70.00
+- time: 55.00
+- emotion: 75.00
+*The criteria for converting to a score out of 100 are as follows:
+point1: 0 | point2: 25 | point3: 50 | point4: 75 | point5: 100
+
+The table of 'Performance' for each case of each element is as follows:
+┏━━━━━━━━━┳━━━━━━━┳━━━━━━┳━━━━━━━━━┓
+┃ Case ID ┃ Money ┃ Time ┃ Emotion ┃
+┡━━━━━━━━━╇━━━━━━━╇━━━━━━╇━━━━━━━━━┩
+│ Average │  70.0 │ 55.0 │    75.0 │
+│    1    │  75.0 │ 50.0 │    75.0 │
+│    2    │  25.0 │ 75.0 │    50.0 │
+│    3    │  75.0 │ 50.0 │    75.0 │
+│    4    │ 100.0 │ 75.0 │   100.0 │
+│    5    │  75.0 │ 25.0 │    75.0 │
+└─────────┴───────┴──────┴─────────┘
+
+Totally, the Social Relationship Index is: 66.92
+
+The table of 'Index'(=Importance*Performance) by case is as follows:
+┏━━━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Case ID ┃ Money ┃ Time  ┃ Emotion ┃ Social Relationship Index ┃
+┡━━━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Average │ 26.92 │ 16.92 │  23.08  │           66.92           │
+│    1    │ 28.85 │ 15.38 │  23.08  │           67.31           │
+│    2    │ 9.62  │ 23.08 │  15.38  │           48.08           │
+│    3    │ 28.85 │ 15.38 │  23.08  │           67.31           │
+│    4    │ 38.46 │ 23.08 │  30.77  │           92.31           │
+│    5    │ 28.85 │ 7.69  │  23.08  │           59.62           │
+└─────────┴───────┴───────┴─────────┴───────────────────────────┘
+---------------------------------------------------------------------------------
+
 ```
 
 ## Requirements
 ```bash
-To calculate the Index, you need arguments below:
-- give_and_take
-- celebration
-- freq_call
-- freq_meeing
+To calculate the Index, you need to collect data of arguments as follows:
+- Money: give-and-take between each other
+- Time: meetings spent together
+- Emotion: contact exchanged with each other
+and each arguments is quantified as "Performance", measured by scaling on a 5-point scale
 
-and set weight of each arguments in range: 
-- 0 < weight1 < 1, = w1
-- 0 < weight2 < 1, = w2
-- 0 < weight3 < 1, = w3
-- 0 < weight4 < 1, = w4
-and summation of all weight(w1+w2+w3+w4) must be equal to 1
+On a scale of 1 to 5, please rate the "Importance" of Money, Time, and Emotion invested in your social relationships, based on your personal values. 
+
+Weight of arguments are calculated by using importance1,2,3 as follows:
+- (importance of argument / total) * 100
+*total: summation of importance 
+
+The Social Relationship Index is "Weighted Sum" of arguments.
+ 
+In order to produce the Social Relationship Index,
+please read carefully the Introduction of index and the criteria for evaluating arguments.   
 ```
 
 # Development environment setting guide
