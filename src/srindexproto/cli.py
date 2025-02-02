@@ -128,7 +128,7 @@ Emotion: When you think of the person you contacted most frequently, (roughly) e
 각 요소별 1~5점 평가의 기준은 아래와 같습니다:
 
 - money: 당신이 상대방에게 투자한 돈을 떠올렸을 떄, 상대방이 나에게 투자한 돈이 몇% 수준인지를 추정합니다. 
- ((당신이 준 돈)/(당신이 받은 돈))*100
+ ((당신이 받은 돈)/(당신이 준 돈))*100
 - 그 정도가 20 미만: 1점 / 20이상 40미만: 2점 / 40이상 60미만: 3점 / 60이상 80미만: 4점 / 80이상: 5점
 
 - time: 당신이 가장 많은 시간 동안 만났던 사람을 떠올렸을 때, 이 사람에게 투자한 시간이 그 사람의 몇 % 수준인지를 추정합니다.
@@ -229,12 +229,20 @@ def calculate_final_results(importance1, importance2, importance3, weight_money,
     print("Thank you for your participation!")
 
 def main():
+    print("process start")
     print_intro()
     importance1, importance2, importance3, weight_money, weight_time, weight_emotion = get_importance_weights()
     print_evaluation_criteria()
     performance_df = get_performance_scores() # DataFrame 받기
     calculate_final_results(importance1, importance2, importance3, weight_money, weight_time, weight_emotion, performance_df) # DataFrame 전달
 
+    print("process end")
+
+def print_main():
+    print(main())
+
+def entry_point():
+    typer.run(main)
 
 if __name__ == "__main__":
     main()
