@@ -1,5 +1,5 @@
-import random
 import typer
+import pandas as pd
 
 def print_intro():
     intro_text = """
@@ -157,14 +157,13 @@ def get_performance_scores():
             num_cases = int(input("\nNumber of people you think of case: "))
             if num_cases > 0:
                 break
-            print("Please enter a positive number.")
+            else:
+                print("Please enter a positive number.")
         except ValueError:
             print("Please enter a valid number.")
-    
-    index_money_list = []
-    index_time_list = []
-    index_emotion_list = []
-    
+
+    data = {'Money': [], 'Time': [], 'Emotion': []}  # 빈 딕셔너리 생성
+
     for i in range(num_cases):
         print(f"\nCase {i+1}:")
         while True:
@@ -172,25 +171,25 @@ def get_performance_scores():
                 perf_money = float(input("Money performance (1-5): "))
                 perf_time = float(input("Time performance (1-5): "))
                 perf_emotion = float(input("Emotion performance (1-5): "))
-                
+
                 if all(1 <= x <= 5 for x in [perf_money, perf_time, perf_emotion]):
                     index_money = ((perf_money - 1) * 100 / (5 - 1))
                     index_time = ((perf_time - 1) * 100 / (5 - 1))
                     index_emotion = ((perf_emotion - 1) * 100 / (5 - 1))
-                    
-                    index_money_list.append(index_money)
-                    index_time_list.append(index_time)
-                    index_emotion_list.append(index_emotion)
+
+                    data['Money'].append(index_money)  # 딕셔너리에 값 추가
+                    data['Time'].append(index_time)
+                    data['Emotion'].append(index_emotion)
                     break
                 else:
                     print("Please enter values between 1 and 5.")
             except ValueError:
                 print("Please enter valid numbers.")
-    
-    return index_money_list, index_time_list, index_emotion_list
 
-def calculate_final_results(importance1, importance2, importance3, weight_money, weight_time, weight_emotion, 
-                          index_money_list, index_time_list, index_emotion_list):
+    df = pd.DataFrame(data)  # 딕셔너리를 DataFrame으로 변환
+    return df
+
+def calculate_final_results(importance1, importance2, importance3, weight_money, weight_time, weight_emotion, performance_df): # DataFrame 받기
     print("\n###########################################################")
     print("""
 (English)
@@ -200,28 +199,32 @@ def calculate_final_results(importance1, importance2, importance3, weight_money,
 """)
     print("###########################################################\n")
     
-    print("the average importance of each elements you answered:")
-    print(f"- money: {importance1:.2f}")
-    print(f"- time: {importance2:.2f}")
-    print(f"- emotion: {importance3:.2f}\n")
+    if performance_df.empty: # DataFrame이 비어있는지 확인
+        print("No performance data entered. Cannot calculate average.")
+        return
+
+    print("the importance of each elements you answered: scale of 100")
+    print(f"- money: {weight_money:.2f}")
+    print(f"- time: {weight_time:.2f}")
+    print(f"- emotion: {weight_emotion:.2f}\n")
     
-    avg_index_money = sum(index_money_list) / len(index_money_list)
-    avg_index_time = sum(index_time_list) / len(index_time_list)
-    avg_index_emotion = sum(index_emotion_list) / len(index_emotion_list)
-    
-    print("the average performance of each elements you answered:")
+    avg_index_money = performance_df['Money'].mean()
+    avg_index_time = performance_df['Time'].mean()
+    avg_index_emotion = performance_df['Emotion'].mean()
+
+    print("the average performance of each elements you answered: scale of 100")
     print(f"- money: {avg_index_money:.2f}")
     print(f"- time: {avg_index_time:.2f}")
     print(f"- emotion: {avg_index_emotion:.2f}")
     print("*The criteria for converting to a score out of 100 are as follows:")
     print("point1: 0 | point2: 25 | point3: 50 | point4: 75 | point5: 100\n")
-    
+
     t_index_money = avg_index_money * (weight_money / 100)
     t_index_time = avg_index_time * (weight_time / 100)
     t_index_emotion = avg_index_emotion * (weight_emotion / 100)
-    
+
     total_index = t_index_money + t_index_time + t_index_emotion
-    
+
     print(f"Totally, the Social Relationship Index is: {total_index:.2f}\n")
     print("Thank you for your participation!")
 
@@ -229,13 +232,9 @@ def main():
     print_intro()
     importance1, importance2, importance3, weight_money, weight_time, weight_emotion = get_importance_weights()
     print_evaluation_criteria()
-    index_money_list, index_time_list, index_emotion_list = get_performance_scores()
-    calculate_final_results(importance1, importance2, importance3, weight_money, weight_time, weight_emotion,
-                          index_money_list, index_time_list, index_emotion_list)
+    performance_df = get_performance_scores() # DataFrame 받기
+    calculate_final_results(importance1, importance2, importance3, weight_money, weight_time, weight_emotion, performance_df) # DataFrame 전달
+
 
 if __name__ == "__main__":
     main()
-    
-
-
-
