@@ -162,7 +162,7 @@ def get_performance_scores():
         except ValueError:
             print("Please enter a valid number.")
 
-    data = {'Money': [], 'Time': [], 'Emotion': []}  # 빈 딕셔너리 생성
+    data = {'Case ID': [], 'Money': [], 'Time': [], 'Emotion': []}  # 빈 딕셔너리 생성
 
     for i in range(num_cases):
         print(f"\nCase {i+1}:")
@@ -177,6 +177,7 @@ def get_performance_scores():
                     index_time = ((perf_time - 1) * 100 / (5 - 1))
                     index_emotion = ((perf_emotion - 1) * 100 / (5 - 1))
 
+                    data['Case ID'].append(int(i+1))  # 딕셔너리에 case 열 추가
                     data['Money'].append(index_money)  # 딕셔너리에 값 추가
                     data['Time'].append(index_time)
                     data['Emotion'].append(index_emotion)
@@ -190,6 +191,7 @@ def get_performance_scores():
     return df
 
 def calculate_final_results(importance1, importance2, importance3, weight_money, weight_time, weight_emotion, performance_df): # DataFrame 받기
+    
     print("\n###########################################################")
     print("""
 (English)
@@ -202,8 +204,8 @@ def calculate_final_results(importance1, importance2, importance3, weight_money,
     if performance_df.empty: # DataFrame이 비어있는지 확인
         print("No performance data entered. Cannot calculate average.")
         return
-
-    print("the importance of each elements you answered: scale of 100")
+    print("\n--------------------------------- RESULT ----------------------------------------")
+    print("The importance of each elements you answered: scale of 100")
     print(f"- money: {weight_money:.2f}")
     print(f"- time: {weight_time:.2f}")
     print(f"- emotion: {weight_emotion:.2f}\n")
@@ -212,12 +214,12 @@ def calculate_final_results(importance1, importance2, importance3, weight_money,
     avg_index_time = performance_df['Time'].mean()
     avg_index_emotion = performance_df['Emotion'].mean()
 
-    print("the average performance of each elements you answered: scale of 100")
+    print("The average performance of each elements you answered: scale of 100")
     print(f"- money: {avg_index_money:.2f}")
     print(f"- time: {avg_index_time:.2f}")
     print(f"- emotion: {avg_index_emotion:.2f}")
     print("*The criteria for converting to a score out of 100 are as follows:")
-    print("point1: 0 | point2: 25 | point3: 50 | point4: 75 | point5: 100\n")
+    print("point1: 0 | point2: 25 | point3: 50 | point4: 75 | point5: 100")
 
     t_index_money = avg_index_money * (weight_money / 100)
     t_index_time = avg_index_time * (weight_time / 100)
@@ -225,18 +227,65 @@ def calculate_final_results(importance1, importance2, importance3, weight_money,
 
     total_index = t_index_money + t_index_time + t_index_emotion
 
-    print(f"Totally, the Social Relationship Index is: {total_index:.2f}\n")
-    print("Thank you for your participation!")
+    #print(performance_df)
+    # 화려한 테이블 만들기
+    from rich.console import Console
+    from rich.table import Table
+
+    print(f"\nThe table of 'Performance' for each case of each element is as follows:")
+    console = Console()
+
+    table = Table(show_header=True, header_style="bold magenta")
+    table.add_column(performance_df.columns[0], style="dim", justify="center")
+    table.add_column(performance_df.columns[1], justify="right")
+    table.add_column(performance_df.columns[2], justify="right")
+    table.add_column(performance_df.columns[3], justify="right")
+ 
+    table.add_row("Average", str(round(avg_index_money,2)), str(round(avg_index_time,2)),str(round(avg_index_emotion,2))) # case 전체평균값 추가
+    for row in performance_df.itertuples(index=False):  # itertuples 사용, index=False필수 
+        table.add_row(
+                str(row[0]), # 각 컬럼의 값을 개별적으로 문자열로 변환
+                str(row[1]),
+                str(row[2]),
+                str(row[3])
+                )
+
+    console.print(table)
+
+
+    print(f"\nTotally, the Social Relationship Index is: {total_index:.2f}")
+    
+    print(f"\nThe table of 'Index'(=Importance*Performance) by case is as follows:")
+    console = Console()
+
+    table = Table(show_header=True, header_style="bold magenta")
+    table.add_column(performance_df.columns[0], style="dim", justify="center")
+    table.add_column(performance_df.columns[1], justify="center")
+    table.add_column(performance_df.columns[2], justify="center")
+    table.add_column(performance_df.columns[3], justify="center")
+    table.add_column("Social Relationship Index", style="blink", justify="center")
+    
+    table.add_row("Average", str(round(t_index_money,2)), str(round(t_index_time,2)),str(round(t_index_emotion,2)), str(round(total_index,2))) # case 전체평균값 추가
+    for row in performance_df.itertuples(index=False):  # itertuples 사용, index=False필수
+        table.add_row(
+                str(row[0]), # 각 컬럼의 값을 개별적으로 문자열로 변환
+                str(round(row[1]*weight_money/100,2)),
+                str(round(row[2]*weight_time/100,2)),
+                str(round(row[3]*weight_emotion/100,2)),
+                str(round((row[1]*weight_money+row[2]*weight_time+row[3]*weight_emotion)/100,2))
+                )
+
+    console.print(table)
+
+    print("---------------------------------------------------------------------------------\n")
+    print("Thank you for your participation!\n")
 
 def main():
-    print("process start")
     print_intro()
     importance1, importance2, importance3, weight_money, weight_time, weight_emotion = get_importance_weights()
     print_evaluation_criteria()
     performance_df = get_performance_scores() # DataFrame 받기
     calculate_final_results(importance1, importance2, importance3, weight_money, weight_time, weight_emotion, performance_df) # DataFrame 전달
-
-    print("process end")
 
 def print_main():
     print(main())
