@@ -1,17 +1,48 @@
 # SRIndexProto
-- Prototype of calculator for Social Relationship Index 
+- Prototype of calculator for Social Relationship Index
+- You can estimate the Social Relationship Index by calculating the average of individual index for each person(=case).
+
+- BUT, PLEASE DO NOT BE SERIOUS.
+
+## Steps for index calculation
+
+The Social Relationship Index is "Weighted Sum" of two parameters: Importance and Performance.
+
+Your social relationship investments are categorized into three elements: Money, Time, and Emotion.
+
+### Importance
+Please rate importance of three elements on a 5-point scale, based on your personal values.
+
+Weights of importance are calculated as follows(%):
+- (importance of one element / total) * 100
+  *total: summation of three importances
+  
+### Performance
+To calculate the performance, you need data of arguments in the three elements as follows:
+- Money: give-and-take between each other
+- Time: meetings spent together
+- Emotion: contact exchanged with each other
+
+These are measured on a 5-point scale, based on your relative investment ratio.
+
+### Social Relationship Index
+Individual index for each person(=case)
+- (Importance weight * Perfomance point) of element 1 + (Importance weight * Perfomance point) of element 2 + (Importance weight * Perfomance point) of element 3
+
+Social Relationship Index
+- (the summation of all individual index for each person) / (the number of persons of you evaluated) 
 
 # Use
 ```bash
-$ srindex 
+First, enter the following console command:
+
+$ srindex
+
+and you will input the arguments into the function in several steps.
 
 Please read the script and think of people around you carefully.
 Please answer the questions faithfully.
 
-You can estimate the Index of overall by calculating average.
-and also the Index of case(person) individually.
-
-BUT, PLEASE DO NOT BE SERIOUS.
 
 Results are shown as follows:
 
@@ -57,25 +88,11 @@ The table of 'Index'(=Importance*Performance) by case is as follows:
 
 ```
 
-## Requirements
-```bash
-To calculate the Index, you need to collect data of arguments as follows:
-- Money: give-and-take between each other
-- Time: meetings spent together
-- Emotion: contact exchanged with each other
-and each arguments is quantified as "Performance", measured by scaling on a 5-point scale
 
-On a scale of 1 to 5, please rate the "Importance" of Money, Time, and Emotion invested in your social relationships, based on your personal values. 
-
-Weight of arguments are calculated by using importance1,2,3 as follows:
-- (importance of argument / total) * 100
-*total: summation of importance 
-
-The Social Relationship Index is "Weighted Sum" of arguments.
  
 In order to produce the Social Relationship Index,
-please read carefully the Introduction of index and the criteria for evaluating arguments.   
-```
+please read carefully the Introduction of index and the criteria for evaluating.   
+
 
 # Development environment setting guide
 ```bash
@@ -85,12 +102,6 @@ please read carefully the Introduction of index and the criteria for evaluating 
 $ source .venv/bin/activate
 $ pdm install
 # $ vi ...
-
-
-# TEST
-$ pdm install
-$ pdm test
-$ pip install .
 
 $ git add <FILE_NAME>
 $ git commit -a
@@ -104,14 +115,12 @@ https://pypi.org/project/SRIndexProto/
 # Tag - Releases
 ```
 
-### Test
-- https://docs.pytest.org/en/stable/
-```bash
-# $ pdm add -dG test pytest pytest-cov
-$ pytest
-$ pytest -s
-$ pytest --cov
-```
+## Enhancement plans
+- IPA (Importance-Perfomance Analysis): a quantitative approach for measuring how people feel about certain characteristics of an issue or a thing (Martilla & James, 1977)
+![image](https://github.com/user-attachments/assets/595edffe-f813-446f-91c3-e3948f9a1514)
+
+
+
 
 ### Ref
 - https://pdm-project.org/en/latest/
