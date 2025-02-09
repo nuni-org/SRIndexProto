@@ -241,7 +241,7 @@ Now the Social Relationship Index can be calculated by summation of index(=impor
         print("No performance data entered. Cannot calculate average.")
         return
     
-    print("\n\n--------------------------------- RESULT ----------------------------------------")
+    print("\n--------------------------------- RESULT ----------------------------------------")
     print("The importance of each elements you answered: scale of 100")
     print(f"- money: {weight_money:.2f}")
     print(f"- time: {weight_time:.2f}")
