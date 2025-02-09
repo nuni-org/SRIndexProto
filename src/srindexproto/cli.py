@@ -14,8 +14,12 @@ In this Index, resources are broadly classified into three elements: Money, Time
 When evaluating each element, Importance and Performance are measured and used for Index calculation.
 
 Importance reflects the respondent's own values and is quantified through a 5-point scale scaling for each element.
-Performance is measured for each case of the respondent's social relationship (relationship with each person). 
-For each element, Money: give-and-take between each other, Time: meetings spent together, and Emotion: Contact exchanged with each other are measured by scaling on a 5-point scale.
+Performance is evaluating each case of elements in social relationship according to the details below: 
+- Money: give-and-take between each other
+- ime: meetings spent together
+- Emotion: Contact exchanged with each other
+
+And these are measured on a 5-point scale.
 
 Finally, the Index is calculated by considering Importance and Performance.
 
@@ -29,22 +33,22 @@ Social Relationship Index의 소개:
 그리고 각 요소를 평가함에 있어, Importance와 Performance 를 측정하고, 이를 Index 계산에 활용합니다.
 
 Importance는 응답자 본인의 가치관을 반영하여 요소별로 5점 척도 scaling을 통해 정량화합니다.
-Performance는 응답자의 사회적 관계의 각 case (각각의 사람과의 관계)에 대해서 측정합니다.
-요소별로는 Money: 상호간의 give-and-take, Time: 서로가 함께한 meeting, Emotion: 서로 주고받은 Contact를 5점 척도로 scaling하여 측정합니다.
+Performance는 각 case별로 사회적 관계에서의 요소를 아래의 세부 사항에 따라 평가합니다.
+- Money: 상대방과 주고 받은 돈
+- Time: 상대방과의 만남에 소요한 시간
+- Emotion: 상대방과 서로 주고받은 연락의 빈도
+
+그리고 측정은 5점 척도로 이루어집니다.
 
 최종적으로 Index는 Importance와 Performance를 고려하여 산출됩니다.
 
----------------------------------------------------------------------------------"""
+---------------------------------------------------------------------------------
+
+"""
     print(intro_text)
 
 def print_importance():
     importance_prompt = """
-
-
-
-
-
-
 --------------------------------- Importance ------------------------------------
 
 (English)
