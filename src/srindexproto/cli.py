@@ -3,7 +3,7 @@ import pandas as pd
 
 def print_intro():
     intro_text = """
-###########################################################
+--------------------------------- Introduction ------------------------------------
 
 (English)
 Introduction to the Social Relationship Index:
@@ -17,10 +17,6 @@ For each element, Money: give-and-take between each other, Time: meetings spent 
 
 Finally, the Index is calculated by considering Importance and Performance.
 
-###########################################################
-
-
-###########################################################
 
 (한국어)
 Social Relationship Index의 소개:
@@ -36,18 +32,20 @@ Performance는 응답자의 사회적 관계의 각 case (각각의 사람과의
 
 최종적으로 Index는 Importance와 Performance를 고려하여 산출됩니다.
 
-###########################################################"""
+---------------------------------------------------------------------------------"""
     print(intro_text)
-    
+
+def print_importance():
     importance_prompt = """
-###########################################################
+--------------------------------- Importance ------------------------------------
 
 (English)
 "On a scale of 1 to 5, please rate the importance of Money, Time, and Emotion invested in your social relationships, based on your personal values." 
+
 (한국어)
 "사회적 관계에 있어 투자되는 Money, Time, Emotion의 중요도를 당신의 가치관에 따라 1~5점으로 입력해주세요"
 
-###########################################################
+---------------------------------------------------------------------------------
 """
     print(importance_prompt)
 
@@ -69,92 +67,114 @@ def get_importance_weights():
         except ValueError:
             print("Please enter valid numbers.")
 
-def print_evaluation_criteria():
-    criteria_text = """
-###########################################################
+def print_performance():
+    performance_text = """
+--------------------------------- Performance ------------------------------------
 
 (English)
 Consider as many people as you want from those with whom you have social relationships.
-Evaluate the elements of money, time, and emotion on a scale of 1 to 5 in the case of the people you have in mind.
+Evaluate the performance of elements: Money, Time, and Emotion on a scale of 1 to 5 in the case of the people you have in mind.
 
-However, the time frame for the evaluation should be from the current time to a period equivalent to your current life routine, with a maximum of 3 years. (For example, if you were a college student and recently got a job, there is a big difference in your life routine before and after getting a job, so you should think within the period from the current time to after getting a job.)
+However, the time frame for the evaluation should be from the current time to a period equivalent to your current life routine, with a maximum of 3 years. 
+(For example, if you were a college student and recently got a job, there is a big difference in your life routine before and after getting a job, so you should think within the period from the current time to after getting a job.)
 The definition of a meeting is to intentionally spend time together with me and the other person at a specific promised time and place, with mutual agreement. (There are spatiotemporal constraints)
 The definition of contact is to intentionally maintain remote communication such as phone calls and messengers with me and the other person with mutual agreement. (There are no spatiotemporal constraints)
 
-The criteria for evaluating each element from 1 to 5 are as follows:
-
-Money: When you think of the money you invested in the other person, estimate what percentage of the money the other person invested in you is. 
-((Money you gave)/(Money you received))*100
-- Less than 20: 1 point
-- 20 or more and less than 40: 2 points
-- 40 or more and less than 60: 3 points
-- 60 or more and less than 80: 4 points
-- 80 or more: 5 points
-
-Time: When you think of the person you met for the most time, estimate what percentage of that person's time you invested in this person. 
-((Time spent with this person)/(Time spent with the person you met the most))*100
-- Less than 20: 1 point
-- 20 or more and less than 40: 2 points
-- 40 or more and less than 60: 3 points
-- 60 or more and less than 80: 4 points
-- 80 or more: 5 points
-
-Emotion: When you think of the person you contacted most frequently, (roughly) estimate what percentage of that person's contact frequency your contact frequency with this person is. 
-((Contact frequency with this person)/(Frequency of contact with the person you contacted most often))*100
-- Less than 20: 1 point
-- 20 or more and less than 40: 2 points
-- 40 or more and less than 60: 3 points
-- 60 or more and less than 80: 4 points
-- 80 or more: 5 points
-
-###########################################################
-
-
-
-
-
-###########################################################
-
 (한국어)
-
 당신과 사회적 관계를 맺고 있는 사람들 중에서 원하는 숫자만큼의 사람을 떠올립니다.
-다음은 당신이 떠올린 사람들과의 case에서 money, time, emotion 요소를 각각 1~5점으로 평가해 주시기 바랍니다.
+다음은 당신이 떠올린 사람들과의 case에서 money, time, emotion 요소의 Performance를 각각 1~5점으로 평가해 주시기 바랍니다.
 
 단, 평가에서의 시간적 범위는 현재 시점부터 당신의 현재 삶의 루틴과 동일한 기간 동안이며, 최대 3년 이내입니다. 
 (예: 최근 3년 이내 당신이 대학생이었다가 취업을 했을 경우, 삶의 루틴이 취업 전과 후가 큰 차이가 나므로, 현재 시점~취업 이후 기간 내에서 생각해야함)
 만남의 정의는 특정 약속된 시공간적 지점에 나와 상대방 상호 합의 하에 의도적으로 함께하는 것입니다. (시공간적 제약이 있음)
 연락의 정의는 전화, 메신저 등의 원격 의사소통을 나와 상대방 상호 합의 하에 의도적으로 유지하는 것입니다. (시공간적 제약이 없음)
 
-각 요소별 1~5점 평가의 기준은 아래와 같습니다:
+"""
+    print(performance_text)
 
-- money: 당신이 상대방에게 투자한 돈을 떠올렸을 떄, 상대방이 나에게 투자한 돈이 몇% 수준인지를 추정합니다. 
- ((당신이 받은 돈)/(당신이 준 돈))*100
-- 그 정도가 20 미만: 1점 / 20이상 40미만: 2점 / 40이상 60미만: 3점 / 60이상 80미만: 4점 / 80이상: 5점
-
-- time: 당신이 가장 많은 시간 동안 만났던 사람을 떠올렸을 때, 이 사람에게 투자한 시간이 그 사람의 몇 % 수준인지를 추정합니다.
- ((이 사람과 만났던 시간)/(가장 많이 만났던 사람의 시간))*100
-- 그 정도가 20 미만: 1점 / 20이상 40미만: 2점 / 40이상 60미만: 3점 / 60이상 80미만: 4점 / 80이상: 5점
-
-- emotion: 당신이 가장 자주 연락한 사람을 떠올렸을 때, 이 사람에게 연락한 빈도가 그 사람의 몇% 수준인지를 추정합니다.
- ((이 사람과의 연락 빈도)/(가장 자주 연락한 사람의 빈도))*100
-- 그 정도가 20 미만: 1점 / 20이상 40미만: 2점 / 40이상 60미만: 3점 / 60이상 80미만: 4점 / 80이상: 5점
-
-###########################################################
-
-###########################################################
+    evalution_criteria_text = """
+--------------------------------- Performance: evaluation criteria ------------------------------------
 
 (English)
-"How many people did you think of? Please respond with the information requested above for the corresponding number of cases."
-(한국어)
-"당신은 얼마나 많은 사람을 떠올렸습니까? 그 수만큼의 케이스에 대해 위에서 안내한 내용을 응답합니다"
+The criteria for evaluating each element from 1 to 5 are as follows:
 
-###########################################################"""
-    print(criteria_text)
+Money: When you think of the money you invested in the other person, estimate approximately what percentage of the money the other person invested in you is. 
+{(Money you gave)/(Money you received)}*100
+- Less than 20: 1 point
+- 20 or more and less than 40: 2 points
+- 40 or more and less than 60: 3 points
+- 60 or more and less than 80: 4 points
+- 80 or more: 5 points
+
+Time: When you think of the person you met for the most time, estimate approximately what percentage of that person's time you invested in this person. 
+{(Time spent with this person)/(Time spent with the person you met the most)}*100
+- Less than 20: 1 point
+- 20 or more and less than 40: 2 points
+- 40 or more and less than 60: 3 points
+- 60 or more and less than 80: 4 points
+- 80 or more: 5 points
+
+Emotion: When you think of the person you contacted most frequently, estimate approximately what percentage of that person's contact frequency your contact frequency with this person is. 
+{(Contact frequency with this person)/(Frequency of contact with the person you contacted most often)}*100
+- Less than 20: 1 point
+- 20 or more and less than 40: 2 points
+- 40 or more and less than 60: 3 points
+- 60 or more and less than 80: 4 points
+- 80 or more: 5 points
+
+(한국어)
+각 요소별 1~5점 평가 기준은 아래와 같습니다:
+
+Money: 당신이 상대방에게 투자한 돈을 떠올렸을 떄, 상대방이 나에게 투자한 돈이 대략적으로 몇% 수준인지를 추정합니다. 
+ {(당신이 받은 돈)/(당신이 준 돈)}*100
+- 20 미만: 1점
+- 20 이상 40 미만: 2점 
+- 40 이상 60 미만: 3점 
+- 60 이상 80 미만: 4점 
+- 80 이상: 5점
+
+Time: 당신이 가장 많은 시간 동안 만났던 사람을 떠올렸을 때, 이 사람에게 투자한 시간이 대략적으로 그 사람의 몇 % 수준인지를 추정합니다.
+ {(이 사람과 만났던 시간)/(가장 많이 만났던 사람의 시간)}*100
+- 20 미만: 1점
+- 20 이상 40 미만: 2점 
+- 40 이상 60 미만: 3점 
+- 60 이상 80 미만: 4점 
+- 80 이상: 5점
+
+Emotion: 당신이 가장 자주 연락한 사람을 떠올렸을 때, 이 사람에게 연락한 빈도가 대략적으로 그 사람의 몇% 수준인지를 추정합니다.
+ {(이 사람과의 연락 빈도)/(가장 자주 연락한 사람의 빈도)}*100
+- 20 미만: 1점
+- 20 이상 40 미만: 2점 
+- 40 이상 60 미만: 3점 
+- 60 이상 80 미만: 4점 
+- 80 이상: 5점
+
+"""
+    print(evalution_criteria_text)
+
+
+    case_input = """
+--------------------------------- Performance: case input ------------------------------------
+
+(English)
+First, consider the people you want to evaluate for performance. 
+Please input the number of people you considered as cases.
+
+And, please input the performance for each case
+
+(한국어)
+우선, Performance를 평가하고 싶은 사람들을 생각해봅니다.
+당신이 case로서 생각한 사람은 몇 명인지 입력해 주세요.
+
+그리고 각각의 case별로 performance를 입력해 주세요.
+
+---------------------------------------------------------------------------------"""
+    print(case_input)
 
 def get_performance_scores():
     while True:
         try:
-            num_cases = int(input("\nNumber of people you think of case: "))
+            num_cases = int(input("\nNumber of people you considered as cases: "))
             if num_cases > 0:
                 break
             else:
@@ -192,19 +212,21 @@ def get_performance_scores():
 
 def calculate_final_results(importance1, importance2, importance3, weight_money, weight_time, weight_emotion, performance_df): # DataFrame 받기
     
-    print("\n###########################################################")
+    print("\n--------------------------------- Index calcuation ------------------------------------")
     print("""
 (English)
-"Now the Social Relationship Index can be calculated by summation of index(=importance*perfomance) of each elements you answered"
+Now the Social Relationship Index can be calculated by summation of index(=importance*perfomance) of each elements you answered.
+
 (한국어)
-"이제 당신이 응답한 각 요소의 Index(importance*performance)의 합계로 Social Relationship Index를 계산할 수 있습니다."
+이제 당신이 응답한 각 요소의 Index(importance*performance)의 합계로 Social Relationship Index를 계산할 수 있습니다.
 """)
-    print("###########################################################\n")
+    
     
     if performance_df.empty: # DataFrame이 비어있는지 확인
         print("No performance data entered. Cannot calculate average.")
         return
-    print("\n--------------------------------- RESULT ----------------------------------------")
+    
+    print("\n\n--------------------------------- RESULT ----------------------------------------")
     print("The importance of each elements you answered: scale of 100")
     print(f"- money: {weight_money:.2f}")
     print(f"- time: {weight_time:.2f}")
@@ -283,7 +305,8 @@ def calculate_final_results(importance1, importance2, importance3, weight_money,
 def main():
     print_intro()
     importance1, importance2, importance3, weight_money, weight_time, weight_emotion = get_importance_weights()
-    print_evaluation_criteria()
+    print_importance()
+    print_performance()
     performance_df = get_performance_scores() # DataFrame 받기
     calculate_final_results(importance1, importance2, importance3, weight_money, weight_time, weight_emotion, performance_df) # DataFrame 전달
 
