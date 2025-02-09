@@ -39,6 +39,12 @@ Performance는 응답자의 사회적 관계의 각 case (각각의 사람과의
 
 def print_importance():
     importance_prompt = """
+
+
+
+
+
+
 --------------------------------- Importance ------------------------------------
 
 (English)
