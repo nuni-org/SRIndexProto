@@ -8,8 +8,10 @@ def print_intro():
 (English)
 Introduction to the Social Relationship Index:
 
-People invest various forms of resources in others to maintain social relationships. There can be numerous perspectives and views on the resources invested, and they can differ from person to person.
-In this Index, resources are broadly classified into three elements: Money, Time, and Emotion. When evaluating each element, Importance and Performance are measured and used for Index calculation.
+People invest various forms of resources in others to maintain social relationships. 
+There can be numerous perspectives and views on the resources invested, and they can differ from person to person.
+In this Index, resources are broadly classified into three elements: Money, Time, and Emotion. 
+When evaluating each element, Importance and Performance are measured and used for Index calculation.
 
 Importance reflects the respondent's own values and is quantified through a 5-point scale scaling for each element.
 Performance is measured for each case of the respondent's social relationship (relationship with each person). 
@@ -40,10 +42,12 @@ def print_importance():
 --------------------------------- Importance ------------------------------------
 
 (English)
-"On a scale of 1 to 5, please rate the importance of Money, Time, and Emotion invested in your social relationships, based on your personal values." 
+Please rate importance of three elements on a 5-point scale, based on your personal values:
+- Money, Time, Emotion
 
 (한국어)
-"사회적 관계에 있어 투자되는 Money, Time, Emotion의 중요도를 당신의 가치관에 따라 1~5점으로 입력해주세요"
+사회적 관계에 있어 투자되는 Money, Time, Emotion의 중요도를 
+당신의 가치관에 따라 1~5점으로 입력해주세요
 
 ---------------------------------------------------------------------------------
 """
@@ -76,9 +80,10 @@ Consider as many people as you want from those with whom you have social relatio
 Evaluate the performance of elements: Money, Time, and Emotion on a scale of 1 to 5 in the case of the people you have in mind.
 
 However, the time frame for the evaluation should be from the current time to a period equivalent to your current life routine, with a maximum of 3 years. 
-(For example, if you were a college student and recently got a job, there is a big difference in your life routine before and after getting a job, so you should think within the period from the current time to after getting a job.)
-The definition of a meeting is to intentionally spend time together with me and the other person at a specific promised time and place, with mutual agreement. (There are spatiotemporal constraints)
-The definition of contact is to intentionally maintain remote communication such as phone calls and messengers with me and the other person with mutual agreement. (There are no spatiotemporal constraints)
+(For example, if you were a college student and recently got a job, there is a big difference in your life routine before and after getting a job, 
+so you should think within the period from the current time to after getting a job.)
+The definition of a meeting is to intentionally spend time together with me and the other person at a specific promised time and place, with mutual agreement. (with spatiotemporal constraints)
+The definition of contact is to intentionally maintain remote communication such as phone calls and messengers with me and the other person with mutual agreement. (without spatiotemporal constraints)
 
 (한국어)
 당신과 사회적 관계를 맺고 있는 사람들 중에서 원하는 숫자만큼의 사람을 떠올립니다.
