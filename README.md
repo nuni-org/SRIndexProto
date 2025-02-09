@@ -25,11 +25,13 @@ To calculate the performance, you need data of arguments in the three elements a
 
 These are measured on a 5-point scale, based on your relative investment ratio.
 
-### Social Relationship Index
-Individual index for each person(=case)
+### Index Calculation 
+Individual index for each person(=case):
+- index of element 1 + index of element 2 + index of element 3 
 - (Importance weight * Perfomance point) of element 1 + (Importance weight * Perfomance point) of element 2 + (Importance weight * Perfomance point) of element 3
 
-Social Relationship Index
+Social Relationship Index:
+- (index case 1 + index case 2 + ... index case n) / n 
 - (the summation of all individual index for each person) / (the number of persons of you evaluated) 
 
 # Use
@@ -116,7 +118,9 @@ https://pypi.org/project/SRIndexProto/
 ```
 
 ## Enhancement plans
-- IPA (Importance-Perfomance Analysis): a quantitative approach for measuring how people feel about certain characteristics of an issue or a thing (Martilla & James, 1977)
+IPA (Importance-Perfomance Analysis): 
+- A quantitative approach for measuring how people feel about certain characteristics of an issue or a thing (Martilla & James, 1977)
+- Chart: Importance-Performance Matrix
 ![image](https://github.com/user-attachments/assets/595edffe-f813-446f-91c3-e3948f9a1514)
 
 
