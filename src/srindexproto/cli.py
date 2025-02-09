@@ -304,8 +304,8 @@ Now the Social Relationship Index can be calculated by summation of index(=impor
 
 def main():
     print_intro()
-    importance1, importance2, importance3, weight_money, weight_time, weight_emotion = get_importance_weights()
     print_importance()
+    importance1, importance2, importance3, weight_money, weight_time, weight_emotion = get_importance_weights()
     print_performance()
     performance_df = get_performance_scores() # DataFrame 받기
     calculate_final_results(importance1, importance2, importance3, weight_money, weight_time, weight_emotion, performance_df) # DataFrame 전달
