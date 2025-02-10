@@ -16,7 +16,7 @@ Please rate importance of three elements on a 5-point scale, based on your perso
 
 Weights of importance are calculated as follows(%):
 - (importance of one element / total) * 100
-  *total: summation of three importances
+- total: summation of three importances points
   
 ### Performance
 To calculate the performance, you need data of arguments in the three elements as follows:
