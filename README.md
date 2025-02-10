@@ -1,6 +1,7 @@
 # SRIndexProto
 - Prototype of calculator for Social Relationship Index
 - You can estimate the Social Relationship Index by calculating the average of individual index for each person(=case).
+- The range of this index is 0 to 100.
 
 - BUT, PLEASE DO NOT BE SERIOUS.
 
@@ -25,7 +26,7 @@ To calculate the performance, you need data of arguments in the three elements a
 
 These are measured on a 5-point scale, based on your relative investment ratio.
 
-### Index Calculation 
+### Index
 Individual index for each person(=case):
 - index of element 1 + index of element 2 + index of element 3 
 - (Importance weight * Perfomance point) of element 1 + (Importance weight * Perfomance point) of element 2 + (Importance weight * Perfomance point) of element 3
